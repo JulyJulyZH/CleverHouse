@@ -11,7 +11,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void shouldSetRadioStationExcess()
+    public void shouldNotSetRadioStationExcess()
     {Radio radio = new Radio();
         radio.setRadioStation(0);
         radio.setRadioStation(12);
@@ -21,7 +21,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetRadioStationUnder()
+    public void shouldNotSetRadioStationUnder()
     {Radio radio = new Radio();
         radio.setRadioStation(9);
         radio.setRadioStation(-2);
@@ -99,6 +99,24 @@ public class RadioTest {
         radio.setVolume(0);
         radio.decreaseVolume();
         int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNotSetVolumeExcess()
+    {Radio radio = new Radio();
+        radio.setVolume(94);
+        radio.setVolume(102);
+        int expected = 94;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNotSetVolume()
+    {Radio radio = new Radio();
+        radio.setVolume(12);
+        radio.setVolume(-10);
+        int expected = 12;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
