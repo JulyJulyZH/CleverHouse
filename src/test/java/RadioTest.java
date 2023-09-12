@@ -2,28 +2,61 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio radio = new Radio();
+    Radio radio2 = new Radio(102);
+    @Test
+    public void defaultRadioStation() {
+        int expected =0;
+        int actual = radio.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void defaultRadioStationSet() {
+        int expected = 0;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
     @Test
     public void shouldSetRadioStation() {
-        Radio radio = new Radio();
         radio.setRadioStation(3);
         int expected = 3;
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
-    public void shouldNotSetRadioStationExcess() {
-        Radio radio = new Radio();
-        radio.setRadioStation(0);
-        radio.setRadioStation(12);
-        int expected = 0;
-        int actual = radio.getRadioStation();
+    public void shouldSetRadioStationSet() {
+        radio2.setRadioStation(3);
+        int expected = 3;
+        int actual = radio2.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldNotSetRadioStationUnder() {
-        Radio radio = new Radio();
+    public void shouldNotSetRadioStationExcess() {
+        radio.setRadioStation(10);
+        int expected = 0;
+        int actual = radio.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNotSetRadioStationExcessSet() {
+        radio2.setRadioStation(103);
+        int expected = 0;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetRadioStationNegativeNumSet() {
+        radio2.setRadioStation(0);
+        radio2.setRadioStation(-5);
+        int expected = 0;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetRadioStationNegativeNum() {
         radio.setRadioStation(9);
         radio.setRadioStation(-2);
         int expected = 9;
@@ -33,41 +66,69 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextRadioStation() {
-        Radio radio = new Radio();
         radio.setRadioStation(6);
         radio.nextRadioStation();
         int expected = 7;
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void shouldSetNextRadioStationSet() {
+        radio2.setRadioStation(6);
+        radio2.nextRadioStation();
+        int expected = 7;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void shouldSetNextRadioStationExcess() {
-        Radio radio = new Radio();
         radio.setRadioStation(9);
         radio.nextRadioStation();
         int expected = 0;
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void shouldSetNextRadioStationExcessSet() {
+        radio2.setRadioStation(101);
+        radio2.nextRadioStation();
+        int expected = 0;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void shouldSetPrevRadioStation() {
-        Radio radio = new Radio();
         radio.setRadioStation(2);
         radio.prevRadioStation();
         int expected = 1;
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void shouldSetPrevRadioStationSet() {
+        radio2.setRadioStation(2);
+        radio2.prevRadioStation();
+        int expected = 1;
+        int actual = radio2.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void shouldSetPrevRadioStationUnder() {
-        Radio radio = new Radio();
         radio.setRadioStation(0);
         radio.prevRadioStation();
         int expected = 9;
         int actual = radio.getRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldSetPrevRadioStationUnderSet() {
+        radio2.setRadioStation(0);
+        radio2.prevRadioStation();
+        int expected = 101;
+        int actual = radio2.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
 
@@ -132,3 +193,4 @@ public class RadioTest {
     }
 
 }
+
