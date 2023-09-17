@@ -4,18 +4,21 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
     Radio radio = new Radio();
     Radio radio2 = new Radio(102);
+
     @Test
     public void defaultRadioStation() {
-        int expected =0;
+        int expected = 0;
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void defaultRadioStationSet() {
         int expected = 0;
         int actual = radio2.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetRadioStation() {
         radio.setRadioStation(3);
@@ -23,6 +26,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetRadioStationSet() {
         radio2.setRadioStation(3);
@@ -38,6 +42,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldNotSetRadioStationExcessSet() {
         radio2.setRadioStation(103);
@@ -72,6 +77,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetNextRadioStationSet() {
         radio2.setRadioStation(6);
@@ -89,6 +95,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetNextRadioStationExcessSet() {
         radio2.setRadioStation(101);
@@ -106,6 +113,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetPrevRadioStationSet() {
         radio2.setRadioStation(2);
@@ -123,6 +131,7 @@ public class RadioTest {
         int actual = radio.getRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetPrevRadioStationUnderSet() {
         radio2.setRadioStation(0);
